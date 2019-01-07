@@ -287,16 +287,28 @@ private extension ViewController {
         // TODO: add a few more demo points of interest.
         // TODO: use more varied imagery.
 
-        let spaceNeedle = buildNode(latitude: 47.6205, longitude: -122.3493, altitude: 225, imageName: "pin")
-        nodes.append(spaceNeedle)
+//        let spaceNeedle = buildNode(latitude: 47.6205, longitude: -122.3493, altitude: 225, imageName: "pin")
+//        nodes.append(spaceNeedle)
+//
+//        let empireStateBuilding = buildNode(latitude: 40.7484, longitude: -73.9857, altitude: 14.3, imageName: "pin")
+//        nodes.append(empireStateBuilding)
+//
+//        let canaryWharf = buildNode(latitude: 51.504607, longitude: -0.019592, altitude: 236, imageName: "pin")
+//        nodes.append(canaryWharf)
+      
+      let uetliberg = buildNode(latitude: 47.349722, longitude: 8.490278, altitude: 870, imageName: "pin")
+      nodes.append(uetliberg)
 
-        let empireStateBuilding = buildNode(latitude: 40.7484, longitude: -73.9857, altitude: 14.3, imageName: "pin")
-        nodes.append(empireStateBuilding)
+      let albispass = buildNode(latitude: 47.27601, longitude: 8.52123, altitude: 790, imageName: "pin")
+      nodes.append(albispass)
+      
+      let rietstr21 = buildNode(latitude: 47.305642, longitude: 8.594819, altitude: 455, imageName: "pin")
+      nodes.append(rietstr21)
+      
+      let primetower = buildNode(latitude: 47.385858, longitude: 8.516894, altitude: 403+126, imageName: "pin")
+      nodes.append(primetower)
 
-        let canaryWharf = buildNode(latitude: 51.504607, longitude: -0.019592, altitude: 236, imageName: "pin")
-        nodes.append(canaryWharf)
-
-        return nodes
+      return nodes
     }
 
     func buildNode(latitude: CLLocationDegrees, longitude: CLLocationDegrees, altitude: CLLocationDistance, imageName: String) -> LocationAnnotationNode {
