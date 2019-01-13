@@ -14,8 +14,6 @@ import ARCL
 @available(iOS 11.0, *)
 class ViewController: UIViewController {
     let sceneLocationView = SceneLocationView()
-
-    var updateUserLocationTimer: Timer?
   
     ///Whether to display some debugging data
     ///This currently displays the coordinate of the best location estimate
@@ -26,7 +24,7 @@ class ViewController: UIViewController {
 
     var updateInfoLabelTimer: Timer?
 
-    var adjustNorthByTappingSidesOfScreen = false
+    var adjustNorthByTappingSidesOfScreen = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,28 +82,6 @@ class ViewController: UIViewController {
 
         infoLabel.frame.origin.y = self.view.frame.size.height - infoLabel.frame.size.height
       
-    }
-
-    @objc func updateUserLocation() {
-        guard let currentLocation = sceneLocationView.currentLocation() else {
-            return
-        }
-
-        DispatchQueue.main.async {
-            if let bestEstimate = self.sceneLocationView.bestLocationEstimate(),
-                let position = self.sceneLocationView.currentScenePosition() {
-                print("")
-                print("Fetch current location")
-                print("best location estimate, position: \(bestEstimate.position), location: \(bestEstimate.location.coordinate), accuracy: \(bestEstimate.location.horizontalAccuracy), date: \(bestEstimate.location.timestamp)")
-                print("current position: \(position)")
-
-                let translation = bestEstimate.translatedLocation(to: position)
-
-                print("translation: \(translation)")
-                print("translated location: \(currentLocation)")
-                print("")
-            }
-        }
     }
 
     @objc func updateInfoLabel() {
