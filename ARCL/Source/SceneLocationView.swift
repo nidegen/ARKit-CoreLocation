@@ -41,7 +41,7 @@ public enum LocationEstimateMethod {
 @available(iOS 11.0, *)
 public class SceneLocationView: ARSCNView {
     // new
-    public var updatedFrameCallback: ((CVPixelBuffer?, SCNSceneRenderer?)->())?
+    public var updatedFrameCallback: ((CVPixelBuffer?, ARCamera?, SCNSceneRenderer?)->())?
   
     ///The limit to the scene, in terms of what data is considered reasonably accurate.
     ///Measured in meters.
@@ -488,7 +488,7 @@ extension SceneLocationView: ARSCNViewDelegate {
                 self.addSceneLocationEstimate(location: currentLocation)
             }
         }
-      updatedFrameCallback?(session.currentFrame?.capturedImage, renderer)
+      updatedFrameCallback?(session.currentFrame?.capturedImage, session.currentFrame?.camera, renderer)
     }
 
     public func sessionWasInterrupted(_ session: ARSession) {
