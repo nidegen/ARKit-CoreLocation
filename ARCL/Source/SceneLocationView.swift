@@ -323,7 +323,7 @@ public class SceneLocationView: ARSCNView {
     }
 
     public func removeLocationNode(locationNode: LocationNode) {
-        if let index = locationNodes.index(of: locationNode) {
+        if let index = locationNodes.firstIndex(of: locationNode) {
             locationNodes.remove(at: index)
         }
 
