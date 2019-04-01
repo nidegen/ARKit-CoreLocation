@@ -24,6 +24,8 @@ public protocol SceneLocationViewDelegate: class {
     func sceneLocationViewDidSetupSceneNode(sceneLocationView: SceneLocationView, sceneNode: SCNNode)
 
     func sceneLocationViewDidUpdateLocationAndScaleOfLocationNode(sceneLocationView: SceneLocationView, locationNode: LocationNode)
+  
+    func didTouchNode(node: SCNNode)
 }
 
 ///Different methods which can be used when determining locations (such as the user's location).
@@ -103,6 +105,18 @@ public class SceneLocationView: ARSCNView {
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         finishInitialization()
+    }
+  
+  
+    override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+      guard let touch = touches.first else {return}
+      if(touch.view == self) {
+        let viewTouchLocation:CGPoint = touch.location(in: self)
+        guard let result = self.hitTest(viewTouchLocation, options: nil).first else {
+          return
+        }
+        locationDelegate?.didTouchNode(node: result.node)
+      }
     }
 
     private func finishInitialization() {
