@@ -27,6 +27,7 @@ open class LocationAnnotationNode: LocationNode {
 
         annotationNode = AnnotationNode(view: nil, image: image)
         annotationNode.geometry = plane
+        annotationNode.pivot = SCNMatrix4MakeTranslation(0, +1, 0)
         annotationNode.removeFlicker()
 
         super.init(location: location)
